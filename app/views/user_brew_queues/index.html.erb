@@ -1,2 +1,9 @@
-<h1>UserBrewQueues#index</h1>
-<p>Find me in app/views/user_brew_queues/index.html.erb</p>
+<h1>All User Brew Queues</h1>
+
+<ul>
+<% @user_brew_queues.each do |ubc|%>
+<li> <%= link_to ubc.user.first_name + "'s" + " visit to " + ubc.brewery.name, user_brew_queue_path(ubc.id)%></li>
+<%end %>
+</ul>
+
+<div><%= button_to 'Add User Brew Queue', new_user_brew_queue_path, method: :get%></div>

@@ -23,7 +23,7 @@ class UserBrewQueuesController < ApplicationController
 
   def update
     @user_brew_queue = UserBrewQueue.find(params[:id])
-    @user_brew_queue.update(user_brew_queue_params(user_brew_queue_params(:brewery_id, :user_id, :interested_in, :favorite))
+    @user_brew_queue.update(user_brew_queue_params(:brewery_id, :user_id, :interested_in, :favorite))
     redirect_to user_brew_queues_path(@user_brew_queue)
   end 
 

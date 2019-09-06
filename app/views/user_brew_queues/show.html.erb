@@ -1,2 +1,8 @@
-<h1>UserBrewQueues#show</h1>
-<p>Find me in app/views/user_brew_queues/show.html.erb</p>
+<h1> Brew Queue </h1>
+<h3>User: <%=@user_brew_queue.user.first_name + " " + @user_brew_queue.user.last_name%></h3>
+<h3>Brewery: <%=@user_brew_queue.brewery.name%></h3>
+<h3>Interest In: <%=@user_brew_queue.interested_in%></h3>
+<h3>Favorite: <%=@user_brew_queue.favorite%></h3>
+
+<%= button_to 'Edit', edit_user_brew_queue_path(@user_brew_queue), method: :get%>
+<%= button_to 'Delete', user_brew_queue_path(@user_brew_queue), method: :delete%>
