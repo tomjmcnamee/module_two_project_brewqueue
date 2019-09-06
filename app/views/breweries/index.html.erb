@@ -1,0 +1,11 @@
+<h1>Breweries#index</h1>
+
+<%= button_to "Create new brewery", new_brewery_path, method: :get %>
+<%= button_to "Show all users", users_path, method: :get %>
+
+<ul>
+<% @breweries.each do |b| %>
+  <li><%= link_to b.name, brewery_path(b.id) %></li>
+<% end %>
+</ul>
+
