@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+  get 'breweries/new'
+  get 'breweries/index'
+  get 'breweries/show'
+  get 'breweries/update'
+  get 'breweries/edit'
+  get 'breweries/destroy'
+  get 'breweries/create'
+  resources :breweries
+  resources :users
+  resources :user_brew_queues
+  resources :comments
+  resources :visits
+ end
