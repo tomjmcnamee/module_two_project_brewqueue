@@ -1,0 +1,9 @@
+<h1>All Users</h1>
+
+<ul>
+<% @users.each do |user|%>
+<li> <%= link_to user.first_name + " " + user.last_name, user_path(user.id)%></li>
+<%end %>
+</ul>
+
+<div><%= button_to 'Add User', new_user_path, method: :get%></div>
