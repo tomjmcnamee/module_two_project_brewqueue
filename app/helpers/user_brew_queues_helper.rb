@@ -1,0 +1,2 @@
+module UserBrewQueuesHelper
+end
