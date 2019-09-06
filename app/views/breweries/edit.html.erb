@@ -1,0 +1,27 @@
+<h1>Breweries#edit</h1>
+
+<% if flash[:messages] %>
+<h3><%= flash[:messages] %> </h3>
+<% end %>
+
+<%= form_for @brewery do |f| %>
+  <%= f.label "Name: " %>
+  <%= f.text_field :name %></br>
+  <%= f.label "Brewery type: " %>
+  <%= f.text_field :brewery_type %></br>
+  <%= f.label "Street: " %>
+  <%= f.text_field :street %></br>
+  <%= f.label "City: " %>
+  <%= f.text_field :city %></br>
+  <%= f.label "State: " %>
+  <%= f.text_field :state %></br>
+  <%= f.label "Zip code: " %>
+  <%= f.text_field :postal_code %></br>
+  <%= f.label "Phone number: " %>
+  <%= f.text_field :phone %></br>
+  <%= f.label "Website: " %>
+  <%= f.text_field :website_url %></br>
+  <%= f.submit :submit %>
+<% end %>
+
+<%= button_to "Cancel", brewery_path(@brewery.id), method: :get %>
