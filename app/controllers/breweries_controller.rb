@@ -1,7 +1,9 @@
 class BreweriesController < ApplicationController
+  before_action :authorized?
   
   def index
-    @breweries  = Brewery.all
+    @breweries = Brewery.all
+    @user = current_user
   end
   
   def show

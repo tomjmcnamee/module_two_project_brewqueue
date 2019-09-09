@@ -20,7 +20,6 @@ class Brewery < ApplicationRecord
       end  # ends brewery.all.each loop
       result_objs_arr
     end
-
     def self.list_all_valid_states
         Brewery.select(:state).map { |rec| rec.state }.uniq
     end
