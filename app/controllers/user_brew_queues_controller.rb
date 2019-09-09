@@ -16,9 +16,14 @@ class UserBrewQueuesController < ApplicationController
   end
 
   def create
-    @user_brew_queue = UserBrewQueue.new(user_brew_queue_params(:brewery_id, :user_id, :interested_in, :favorite))
-    @user_brew_queue.save
-    redirect_to user_brew_queues_path(@user_brew_queue)
+    brewery_id = params[:breweryid_to_add]
+    user_id = params[:userid_to_add]
+    if new_user_brew_queue = UserBrewQueue.new(brewery_id: brewery_id, user_id: user_id)
+        new_user_brew_queue.save
+    else
+      flash.now[:messages] = new_user_brew_queue.errors.full_messages
+    end
+    redirect_to user_path(params[:userid_to_add])
   end 
 
   def update
