@@ -1,4 +1,4 @@
-<h1>Show page for <%= @brewery.name %></h1>
+<h1><%= @brewery.name %></h1>
 
 <p>Brewery type: <%= @brewery.brewery_type %></p>
 <p>Brewery Address: <%= @brewery.street %>, <%= @brewery.city %>, <%= @brewery.state%> <%=@brewery.postal_code %> </p>
@@ -7,6 +7,7 @@
 <p>Website: <%= link_to @brewery.website_url, @brewery.website_url, target: :_blank %></p>
 
 <%= button_to "Add to your Brew Queue!", "/user_brew_queues", method: :post, params: { breweryid_to_add: @brewery.id, userid_to_add: session[:user_id] } %>
+<%= button_to "Return to your user profile", user_path(session[:user_id]), method: :get %>
 <%= button_to "Edit this brewery", edit_brewery_path(@brewery.id), method: :get %>
 <%= button_to "Delete this brewery", "/breweries/#{@brewery.id}", method: :delete %>
 <%= button_to "Show all breweries", breweries_path, method: :get %>

@@ -14,7 +14,7 @@
 
 <h2>----------Your Brew Queues--------</h2>
   <%  @user_brewqueues.each do |bq| %>
-    <%= bq.brewery.name%><br />
+    <%= link_to bq.brewery.name, brewery_path(bq.id) %><br />
   <%  end %>
 
 <h2>----------Search For Breweries--------</h2>
