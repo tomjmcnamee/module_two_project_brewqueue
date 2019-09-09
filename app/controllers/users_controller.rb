@@ -5,6 +5,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
+    if params[:search_name] || params[:search_city] || params[:search_state]
+      search_name = params[:search_name]
+      search_city = params[:search_city] 
+      search_state = params[:search_state] 
+      # byebug
+      @search_result_brewery_objs = Brewery.search_for_brewery(search_name.downcase, search_city.downcase,search_state)
+      # byebug
+      # redirect_to user_path(@user.id)
+    end
   end
 
   def edit
