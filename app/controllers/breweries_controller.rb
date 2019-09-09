@@ -8,6 +8,8 @@ class BreweriesController < ApplicationController
   
   def show
     @brewery = Brewery.find(params[:id])
+    @user = User.find(session[:user_id])
+    @user_bq_ids = @user.user_brew_queues.map { |bq| bq.brewery_id }
   end
   
   def edit

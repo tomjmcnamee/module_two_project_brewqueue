@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   resources :breweries 
-  resources :user_brew_queues
+  #resources :user_brew_queues
   resources :comments 
   resources :visits
+
+  # UserBrewQueues Routes
+  post "/user_brew_queues", to: "user_brew_queues#create"
+  delete "/user_brew_queues", to: "user_brew_queues#destroy"
+
 
   # User Routes
   

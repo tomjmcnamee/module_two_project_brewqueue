@@ -18,14 +18,14 @@ class UserBrewQueuesController < ApplicationController
   end
 
   def create
-    brewery_id = params[:breweryid_to_add]
-    user_id = params[:userid_to_add]
+    brewery_id = params[:breweryid_for_action]
+    user_id = params[:userid_for_action]
     if new_user_brew_queue = UserBrewQueue.new(brewery_id: brewery_id, user_id: user_id)
         new_user_brew_queue.save
     else
       flash.now[:messages] = new_user_brew_queue.errors.full_messages
     end
-    redirect_to user_path(params[:userid_to_add])
+    redirect_to user_path(user_id)
   end 
 
   def update
@@ -35,9 +35,14 @@ class UserBrewQueuesController < ApplicationController
   end 
   
   def destroy 
-    @user_brew_queue = UserBrewQueue.find(params[:id])
-    @user_brew_queue.delete
-    redirect_to user_brew_queues_path
+    brewery_id = params[:breweryid_for_action]
+    user_id = params[:userid_for_action]
+    
+    if destroyed_bq = UserBrewQueue.find_by(brewery_id: brewery_id, user_id: user_id).destroy
+    else
+      flash.now[:messages] = new_user_brew_queue.errors.full_messages.first
+    end
+    redirect_to user_path(user_id)
   end 
 
   private
