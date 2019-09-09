@@ -8010,11 +8010,3 @@ Brewery.create!([
 {"name":"V Twin Brewing Company","brewery_type":"micro","street":"2302 N Argonne Rd Ste H","city":"Spokane","state":"Washington","postal_code":"99212-2366","country":"United States","longitude":"","latitude":"","phone":"5098680182","website_url":"http://www.facebook.com/vtwinbrewingco"},
 {"name":"Wenatchee Valley Brewing Co.","brewery_type":"micro","street":"108 Island Vw","city":"Wenatchee","state":"Washington","postal_code":"98801-2039","country":"United States","longitude":"","latitude":"","phone":"5098888088","website_url":"http://wenatcheevalleybrewing.com/"}
 ])
-
-User.create!(id: 1, first_name: "Jonathan", last_name: "Louey", street: "532 West 111th Street", city: "New York", state: "NY", postal_code: "10025", age: "30", email_address: "jonathan.louey@gmail.com", password_digest: "12345")
-User.create!(id: 2, first_name: "Suzanne", last_name: "Maietta", street: "532 West 111th Street", city: "New York", state: "NY", postal_code: "10025", age: "29", email_address: "s.maietta@gmail.com", password_digest: "12345")
-User.create!(id: 3, first_name: "CJ", last_name: "Louey", street: "PO Box 1769", city: "Amagansett", state: "NY", postal_code: "11930", age: "28", email_address: "cj.louey@gmail.com", password_digest: "12345")
-
-UserBrewQueue.create!(brewery_id: 1, user_id: 2, interested_in: true, favorite: false)
-UserBrewQueue.create!(brewery_id: 2, user_id: 2, interested_in: true, favorite: false)
-UserBrewQueue.create!(brewery_id: 3, user_id: 3, interested_in: true, favorite: false)

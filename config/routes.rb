@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   patch "/users/:id", to: "users#update"
 
-  delete "/users/:id/delete", to: "users#destroy"
+  delete "/users/:id", to: "users#destroy"
 
   # Session Routes 
   get "/login", to: "sessions#new", as: "login"
