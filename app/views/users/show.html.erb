@@ -12,6 +12,11 @@
 
 
 
+<h2>----------Your Brew Queues--------</h2>
+  <%  @user_brewqueues.each do |bq| %>
+    <%= bq.brewery.name%><br />
+  <%  end %>
+
 <h2>----------Search For Breweries--------</h2>
 
 <%= form_tag(user_path(@user.id), method: :get) do   %>
@@ -23,6 +28,8 @@
 
 <% if @search_result_brewery_objs %>
   <% @search_result_brewery_objs.each do |res| %>
-    <%= link_to res.name, brewery_path(res.id) %>, <%= res.city %>, <%= res.state%>, <%= button_to "Add to your Brew Queue!", user_path(@user.id), method: :get, params: { brewery_to_add: res.id } %><br />
+    <%= link_to res.name, brewery_path(res.id) %>, <%= res.city %>, <%= res.state%>, <%= button_to "Add to your Brew Queue!", "/user_brew_queues", method: :post, params: { breweryid_to_add: res.id, userid_to_add: @user.id } %><br />
   <% end %>
 <% end %>
+
+<%= flash.now[:messages] %>
