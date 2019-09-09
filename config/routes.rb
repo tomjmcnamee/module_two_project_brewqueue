@@ -22,5 +22,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy", as: "logout"
 
+  # Application Routes
+  get "/", to: "application#homepage", as: "homepage"
+
 end
 
