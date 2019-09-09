@@ -1,4 +1,6 @@
 class UserBrewQueuesController < ApplicationController
+  before_action :authorized?
+
   def index
     @user_brew_queues = UserBrewQueue.all
   end
