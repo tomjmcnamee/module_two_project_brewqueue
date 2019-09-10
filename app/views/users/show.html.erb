@@ -1,4 +1,4 @@
-<h1> <%=@user.first_name + " " + @user.last_name%> </h1>
+<h1> <%=@user.first_name + " " + @user.last_name%> </h1><br />
 Street: <%=@user.street%><br />
 City: <%=@user.city%><br />
 State: <%=@user.state%><br />
@@ -6,22 +6,37 @@ Postal Code: <%=@user.postal_code%><br />
 Age: <%=@user.age%><br />
 E-mail Address: <%=@user.email_address%><br />
 
-<!-- THESE SHOULD be moved to options on the header bar -->
+<!-- THESE SHOULD be moved to options on the header bar 
 <%= button_to 'Edit your account', edit_user_path(@user), method: :get%>
 <%= button_to 'Delete you account', user_path(@user), method: :delete%>
 <%= button_to 'Sign Out', logout_path(@session), method: :delete%>
-
-
+-->
+<br />
 <% if @user.id == session[:user_id]%>
   <h2>----------You have <%=pluralize(@user_brewqueues.length, 'entry')%> in your Brew Queue--------</h2>
 <% else %>
   <h2>----------There are <%=pluralize(@user_brewqueues.length, 'entry')%> in <%=@user.first_name%>'s Brew Queue--------</h2>
 <% end %>  
-
+<table>
+<tbody>
+    <th>Brewery Name</th>
+    <th>User Name</th>
+    <th>Favorite?</th>
+    <th>Your<br />Visits</th>
+    <th>Your<br />Comments</th>
   <%  @user_brewqueues.each do |bq| %>
-    <%= link_to bq.brewery.name, brewery_path(bq.brewery_id) %><br />
+  <tr>
+    <td><%=link_to bq.brewery.name, brewery_path(bq.brewery_id) %></td>
+    <td><%=bq.user.first_name%></td>
+    <td><%=bq.favorite%></td>
+    <td><%=bq.favorite%></td>
+    <td><%=bq.favorite%></td>
+  </tr>
   <%  end %>
+</tbody>
+</table>
 
+<br />
 <% if @user.id == session[:user_id]%>
   <h2>----------Search For Breweries--------</h2>
   <%= form_tag(user_path(@user.id), method: :get) do   %>
@@ -31,6 +46,7 @@ E-mail Address: <%=@user.email_address%><br />
     <%= submit_tag "Search" %> <% %>
   <% end %>
 
+  <br />
   <% if @search_result_brewery_objs %>
     <% @search_result_brewery_objs.each do |res| %>
       <%= link_to res.name, brewery_path(res.id) %>, <%= res.city %>, <%= res.state%>, <%= button_to "Add to your Brew Queue!", "/user_brew_queues", method: :post, params: { breweryid_for_action: res.id, userid_for_action: session[:user_id]} %><br />

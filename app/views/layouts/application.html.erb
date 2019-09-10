@@ -8,7 +8,26 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+   <header>
+      <img src="http://miskatonicbrewing.com/wp-content/uploads/2015/10/Miskatonic-Brewing-Company-Home-Banner-8-600x237.jpg" alt="Cinema Penguin" id="logoimg" />
+      <nav class="horizontal" id="topLinks">
+         <ul>
+         <% if session[:user_id]%>
+            <li></li>
+            <li></li>
+            <li><%= link_to 'Edit your account', edit_user_path(session[:user_id]), method: :get%></li>
+            <li></li>
+            <li><%= link_to 'Sign Out', logout_path, method: :delete%></li>
+         <% else %>
+            <li></li>
+            <li></li>
+            <li><%= link_to "Sign Up", signup_path, method: :get %></li>
+            <li></li>
+            <li><%= link_to "Login", login_path, method: :get %></li>
+         <% end %>
+         </ul>
+      </nav>
+   </header>
   <body>
     <%= yield %>
   </body>

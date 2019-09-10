@@ -13,3 +13,157 @@
  *= require_tree .
  *= require_self
  */
+
+ 
+article, aside, figcaption, figure,
+footer, header, main, nav, section { 
+   display: block;
+}
+
+address, article, aside, blockquote, body, cite, 
+div, dl, dt, dd, em, figcaption, figure, footer, 
+h1, h2, h3, h4, h5, h6, header, html, img, 
+li, main, nav, nav a, ol, p, section, span, ul,
+table, tr, td, th, col, colgroup {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font-size: 100%;
+   background: transparent;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;  
+}
+
+
+/* Set the default page element styles */
+
+body {
+   line-height: 1.2em;
+}
+
+ul, ol {
+   list-style: none;
+}
+
+nav ul {
+   list-style: none;
+   list-style-image: none;
+}
+
+nav a {
+   text-decoration: none;
+}
+
+ 
+ html {
+    background: linear-gradient(to top left, rgb(193, 206, 219), rgb(56, 87, 119));
+    font-family: Verdana, Geneva, sans-serif;
+ }
+ 
+ body > header {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;    
+    margin: 0px auto;
+    min-width: 320px;
+    max-width: 1100px;  
+    padding: 10px;
+    width: 100%;
+ }
+ 
+ /* Header styles */
+ 
+ body > header {
+    border-bottom: 10px solid rgb(200, 118, 0);
+    color: white;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap; 
+    -webkit-align-items: flex-end;
+    align-items: flex-end; 
+    margin-bottom: 30px;
+    width: 100%;
+ }
+ 
+ body > header > img {
+    display: block;
+    -webkit-flex: 0 1 200px;
+    flex: 0 1 200px;
+ }
+ 
+ 
+ /* Navigation list styles */
+ 
+ body > header > nav {
+    -webkit-flex: 1 1 441px;
+    flex: 1 1 441px;
+ }
+ 
+ body > header > nav > ul {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+ }
+ 
+ body > header > nav > ul li {
+    -webkit-flex: 0 1 auto;
+    flex: 0 1 auto;
+ }
+ 
+ body > header > nav > ul > li {
+    font-size: 1.2em; 
+    line-height: 2.3em; 
+    height: 1.5em;
+    padding: 0px 10px;
+ }
+ 
+ body > header > nav > ul > li > a {
+    color: white;
+    display: block;
+    width: 100%;
+ }
+ 
+ 
+ /* Section Styles */
+ 
+ /* Table Styles */
+ 
+ table {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: rgba(51, 51, 51, 0.9);     
+    width: 80%;
+ }
+ 
+
+ 
+ table td {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    vertical-align: top;
+    padding: 4px;
+    width: 50%;
+ }
+ 
+ table tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.4);
+ }
+ 
+ table tbody tr:nth-of-type(even) {
+    background-color: rgba(255, 255, 255, 0.6);
+ }
+ 
+ table a {
+    color: rgba(51, 51, 51, 0.9);
+    text-decoration: none;
+ }
+ 
+ table a:hover {
+    text-decoration: underline;
+ }
+ 
+ 
