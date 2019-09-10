@@ -31,7 +31,7 @@ E-mail Address: <%=@user.email_address%><br />
     <td><%=link_to bq.brewery.name, brewery_path(bq.brewery_id) %></td>
     <td><%=bq.interested_in%></td>
     <td><%=bq.favorite%></td>
-    <td><%=@user_visits.where(user_brew_queue_id: bq.id).length%></td>
+    <td><%=link_to @user_visits.where(user_brew_queue_id: bq.id).length, visit_path(1)%></td>
     <td><%=bq.favorite%></td>
   </tr>
   <%  end %>

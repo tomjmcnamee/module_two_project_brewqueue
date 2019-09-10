@@ -13,12 +13,14 @@ class VisitsController < ApplicationController
 
     def new
         @visit = Visit.new
-        @user_brew_queue = UserBrewQueue.all
+        @user_brew_queue = params[:brew_queue_id_for_action]
     end 
 
     def create
-        @visit = Visit.create(visit_params)
-        redirect_to visit_path(@visit)
+        @visit = Visit.new
+        @visit.update(visit_params)
+        @visit.save
+        redirect_to brewery_path(@visit.user_brew_queue.brewery.id)
     end
     
     def update

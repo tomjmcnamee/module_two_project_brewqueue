@@ -10,6 +10,7 @@
   <%= button_to "Add to your Brew Queue!", "/user_brew_queues", method: :post, params: { breweryid_for_action: @brewery.id, userid_for_action: session[:user_id] } %>
 <% else %>
   <%= button_to "Remove from your Brew Queue!", "/user_brew_queues", method: :delete, params: { breweryid_for_action: @brewery.id, userid_for_action: session[:user_id] } %>
+  <%= button_to "Add Visit", new_visit_path, method: :get, params: { brew_queue_id_for_action: @brewqueue_id }  %>
 <% end %>
 <%= button_to "Return to your Brew Queue", user_path(session[:user_id]), method: :get %><br />
 
@@ -28,6 +29,24 @@
    <div class="mapouter"><div class="gmap_canvas"><iframe width="450" height="375" id="gmap_canvas" src="https://maps.google.com/maps?q=<%=@brewery.city%>%2C<%=@brewery.state%>&t=&z=14&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"></a></div></div>
 <% end %>
 
+
+<br />
+<h1>YOUR Visits</h1>
+
+<table>
+<tbody>
+    <th>Event Name</th>
+    <th>Date</th>
+    <th>Comments</th>
+  <%@bq_visit_objs.each do |bqv| %>
+  <tr>
+    <td><%=link_to bqv.event_name, visit_path(bqv.id) %></td>
+    <td><%=bqv.visit_date%></td>
+    <td><%=link_to bqv.event_name, visit_path(bqv.id) %></td>
+  </tr>
+  <%  end %>
+</tbody>
+</table>
 
 
 
