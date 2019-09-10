@@ -18,9 +18,14 @@ class VisitsController < ApplicationController
 
     def create
         @visit = Visit.new
-        @visit.update(visit_params)
-        @visit.save
-        redirect_to brewery_path(@visit.user_brew_queue.brewery.id)
+        @user_brew_queue = params[:visit][:user_brew_queue_id]
+        if @visit.update(visit_params)
+            @visit.save
+            redirect_to brewery_path(@visit.user_brew_queue.brewery.id)
+        else
+            flash.now[:message] = @visit.errors.full_messages.first
+            render :new
+        end
     end
     
     def update

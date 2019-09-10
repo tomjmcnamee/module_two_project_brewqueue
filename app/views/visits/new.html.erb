@@ -1,8 +1,14 @@
 <h1> New Visit Form </h1>
+<br />
+<%  if flash[:message] %>
+  <%=  flash[:message] %>
+<% end %>
+<br />
+<br />
 <%= form_for(@visit) do |f|%>
-<label>Event Name</label>
+<label>Event Name: </label>
 <%= f.text_field :event_name %><br>
-<label>Date</label>
+<label>Date: </label>
 <%= f.date_field :visit_date%><br>
 <%= f.hidden_field :user_brew_queue_id, :value => @user_brew_queue %><br>
 <%= f.submit%>

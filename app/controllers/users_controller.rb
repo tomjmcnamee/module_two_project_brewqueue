@@ -28,9 +28,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    session[:user_id] = user.id
-    redirect_to user_path(user)
+    @user = User.new
+    if @user.update(user_params)
+      @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user.id)
+    else
+      flash.now[:message] = @user.errors.full_messages.first
+      render :new
+    end
   end 
 
   def update
