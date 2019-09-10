@@ -1,0 +1,6 @@
+<h1>Comment Show Page </h1>
+<h3>Name: <%=@comment.visit_id%>
+<h3>Date: <%=@comment.comment%>
+
+<div><%=button_to 'Edit', edit_comment_path(@comment), method: :get %></div>
+<div><%=button_to 'Delete', comment_path(@comment), method: :delete %></div>

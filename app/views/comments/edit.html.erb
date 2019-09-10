@@ -1,0 +1,9 @@
+<h1> Edit Comment Form </h1>
+<%= form_for(@comment) do |f|%>
+<label>Visit ID</label><br>
+<%= f.text_field :visit_id%>
+<label>Comment</label><br>
+<%= f.date_field :comment%>
+
+<%= f.submit%>
+<%end%>

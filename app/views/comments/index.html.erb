@@ -1,0 +1,9 @@
+<h1>All Comments</h1>
+
+<ul>
+    <% @comments.each do |comment|%>
+    <li> <%= link_to comment.comment, comment_path(comment.id)%></li>
+    <%end%>
+</ul>
+
+<div><%= button_to "Add comment", new_comment_path, method: :get%></div>

@@ -14,9 +14,6 @@ class BreweriesController < ApplicationController
       @brewqueue_id = @user.user_brew_queues.find_by(brewery_id: @brewery.id).id
     end
     @bq_visit_objs = Visit.where(user_brew_queue_id: @brewqueue_id)
-    # byebug
-
-    # @user_visits_to_this_bar = 
   end
   
   def edit
