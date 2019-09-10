@@ -1,0 +1,10 @@
+<h1> Edit Visit Form </h1>
+<%= form_for(@visit) do |f|%>
+<label>Event Name</label><br>
+<%= f.text_field :event_name%>
+<label>Date</label><br>
+<%= f.date_field :visit_date%>
+
+<%= f.submit%>
+<%end%>
+
