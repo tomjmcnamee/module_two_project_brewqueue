@@ -5,3 +5,17 @@
 
 <div><%=button_to 'Edit', edit_visit_path(@visit), method: :get %></div>
 <div><%=button_to 'Delete', visit_path(@visit), method: :delete %></div>
+<div><%=button_to "Add Comment", new_comment_path, method: :get, params: { visit_id_for_action: @visit.id}  %>
+
+<table>
+<tbody>
+    <th>Date</th>
+    <th>Comment</th>
+  <%@visit_comments.each do |comment| %>
+  <tr>
+    <td><%= comment.created_at %></td>
+    <td><%= comment.comment%></td>
+  </tr>
+  <%  end %>
+</tbody>
+

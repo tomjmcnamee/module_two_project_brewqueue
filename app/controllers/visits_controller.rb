@@ -5,6 +5,8 @@ class VisitsController < ApplicationController
     
     def show
         @visit = Visit.find(params[:id])
+        @user = User.find(session[:user_id])
+        @visit_comments = Comment.where(visit_id: @visit.id)
     end 
 
     def edit
