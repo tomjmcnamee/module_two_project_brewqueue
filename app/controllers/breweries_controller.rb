@@ -9,7 +9,13 @@ class BreweriesController < ApplicationController
   def show
     @brewery = Brewery.find(params[:id])
     @user = User.find(session[:user_id])
-    @user_bq_ids = @user.user_brew_queues.map { |bq| bq.brewery_id }
+    @brewqueue_id = ""
+    if @user.user_brew_queues.find_by(brewery_id: @brewery.id) != nil
+      @brewqueue_id = @user.user_brew_queues.find_by(brewery_id: @brewery.id).id
+    end
+    # byebug
+
+    # @user_visits_to_this_bar = 
   end
   
   def edit

@@ -6,12 +6,12 @@
 <p>Phone: <%= @brewery.phone %></p>
 <p>Website: <%= link_to @brewery.website_url, @brewery.website_url, target: :_blank %></p>
 
-<% if @user_bq_ids.include?(@brewery.id)%>
-  <%= button_to "Remove from your Brew Queue!", "/user_brew_queues", method: :delete, params: { breweryid_for_action: @brewery.id, userid_for_action: session[:user_id] } %>
-<% else %>
+<% if @brewqueue_id == "" %>
   <%= button_to "Add to your Brew Queue!", "/user_brew_queues", method: :post, params: { breweryid_for_action: @brewery.id, userid_for_action: session[:user_id] } %>
+<% else %>
+  <%= button_to "Remove from your Brew Queue!", "/user_brew_queues", method: :delete, params: { breweryid_for_action: @brewery.id, userid_for_action: session[:user_id] } %>
 <% end %>
-<%= button_to "Return to your user profile", user_path(session[:user_id]), method: :get %><br />
+<%= button_to "Return to your Brew Queue", user_path(session[:user_id]), method: :get %><br />
 
 <!-- The following lines should only work for ADMINISTRATORS
 <%= button_to "Edit this brewery", edit_brewery_path(@brewery.id), method: :get %>
