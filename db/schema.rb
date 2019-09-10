@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_06_155547) do
+ActiveRecord::Schema.define(version: 2019_09_10_150343) do
 
   create_table "breweries", force: :cascade do |t|
     t.string "name"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_09_06_155547) do
     t.date "visit_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "event_name"
     t.index ["user_brew_queue_id"], name: "index_visits_on_user_brew_queue_id"
   end
 

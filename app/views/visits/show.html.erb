@@ -1,0 +1,7 @@
+<h1>Visit Show Page </h1>
+<h3>Name: <%=@visit.event_name%>
+<h3>Date: <%=@visit.visit_date%>
+<h3>Brew Queue ID: <%=@visit.user_brew_queue_id%>
+
+<div><%=button_to 'Edit', edit_visit_path(@visit), method: :get %></div>
+<div><%=button_to 'Delete', visit_path(@visit), method: :delete %></div>
