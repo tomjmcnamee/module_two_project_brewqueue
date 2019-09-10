@@ -9,12 +9,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
    <header>
-      <img src="http://miskatonicbrewing.com/wp-content/uploads/2015/10/Miskatonic-Brewing-Company-Home-Banner-8-600x237.jpg" alt="Cinema Penguin" id="logoimg" />
+      <!--<img src="http://miskatonicbrewing.com/wp-content/uploads/2015/10/Miskatonic-Brewing-Company-Home-Banner-8-600x237.jpg" alt="Cinema Penguin" id="logoimg" /> -->
+      <%=  image_tag("sampler_cups.jpg", size: "500x129")%>
+      <div>
       <nav class="horizontal" id="topLinks">
+          <% if session[:user_id]%>
+            <p id="UserName">Welcome Back, <%= link_to User.find(session[:user_id]).first_name, user_path(session[:user_id])%></p>
+          <% end %>
          <ul>
          <% if session[:user_id]%>
-            <li></li>
-            <li></li>
             <li><%= link_to 'Edit your account', edit_user_path(session[:user_id]), method: :get%></li>
             <li></li>
             <li><%= link_to 'Sign Out', logout_path, method: :delete%></li>
@@ -27,6 +30,7 @@
          <% end %>
          </ul>
       </nav>
+      </div>
    </header>
   <body>
     <%= yield %>

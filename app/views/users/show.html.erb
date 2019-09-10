@@ -1,3 +1,4 @@
+<!-- 
 <h1> <%=@user.first_name + " " + @user.last_name%> </h1><br />
 Street: <%=@user.street%><br />
 City: <%=@user.city%><br />
@@ -5,6 +6,7 @@ State: <%=@user.state%><br />
 Postal Code: <%=@user.postal_code%><br />
 Age: <%=@user.age%><br />
 E-mail Address: <%=@user.email_address%><br />
+-->
 
 <!-- THESE SHOULD be moved to options on the header bar 
 <%= button_to 'Edit your account', edit_user_path(@user), method: :get%>
@@ -20,16 +22,16 @@ E-mail Address: <%=@user.email_address%><br />
 <table>
 <tbody>
     <th>Brewery Name</th>
-    <th>User Name</th>
+    <th>Interested?</th>
     <th>Favorite?</th>
-    <th>Your<br />Visits</th>
-    <th>Your<br />Comments</th>
+    <th>Visits</th>
+    <th>Comments</th>
   <%  @user_brewqueues.each do |bq| %>
   <tr>
     <td><%=link_to bq.brewery.name, brewery_path(bq.brewery_id) %></td>
-    <td><%=bq.user.first_name%></td>
+    <td><%=bq.interested_in%></td>
     <td><%=bq.favorite%></td>
-    <td><%=bq.favorite%></td>
+    <td><%=@user_visits.where(user_brew_queue_id: bq.id).length%></td>
     <td><%=bq.favorite%></td>
   </tr>
   <%  end %>
@@ -42,7 +44,7 @@ E-mail Address: <%=@user.email_address%><br />
   <%= form_tag(user_path(@user.id), method: :get) do   %>
   Name: <%= text_field_tag(:search_name, params[:search_name]) %><br />
   City: <%= text_field_tag(:search_city, params[:search_city]) %><br />
-  State: <%= select_tag :search_state, options_from_collection_for_select(@states, :to_s, :to_s), { :include_blank => true } %><br />
+  State: <%= select_tag :search_state, options_from_collection_for_select(@states, :to_s, :to_s), { :include_blank => true } %><br /> -->
     <%= submit_tag "Search" %> <% %>
   <% end %>
 

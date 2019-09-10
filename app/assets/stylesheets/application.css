@@ -64,12 +64,11 @@ nav a {
  body > header {
     display: -webkit-flex;
     display: flex;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;    
+   
     margin: 0px auto;
     min-width: 320px;
     max-width: 1100px;  
-    padding: 10px;
+    padding: 3px;
     width: 100%;
  }
  
@@ -97,12 +96,12 @@ nav a {
  
  /* Navigation list styles */
  
- body > header > nav {
+ body > header > div> nav {
     -webkit-flex: 1 1 441px;
     flex: 1 1 441px;
  }
  
- body > header > nav > ul {
+ body > header > div > nav > ul {
     display: -webkit-flex;
     display: flex;
     -webkit-flex-flow: row nowrap;
@@ -111,59 +110,66 @@ nav a {
     justify-content: flex-end;
  }
  
- body > header > nav > ul li {
+ body > header > div > nav > ul li {
     -webkit-flex: 0 1 auto;
     flex: 0 1 auto;
  }
+
  
- body > header > nav > ul > li {
-    font-size: 1.2em; 
-    line-height: 2.3em; 
-    height: 1.5em;
-    padding: 0px 10px;
- }
- 
- body > header > nav > ul > li > a {
+ body > header > div> nav > ul > li {
+   font-size: 1.2em; 
+   line-height: 2.3em; 
+   height: 1.5em;
+   padding: 0px 10px;
+  }
+  
+  body > header > div> nav > ul > li > a {
     color: white;
     display: block;
     width: 100%;
- }
- 
- 
- /* Section Styles */
- 
- /* Table Styles */
- 
- table {
+  }
+  
+  
+  /* Section Styles */
+  
+  /* Table Styles */
+  
+  table {
     border: 1px solid rgba(255, 255, 255, 0.4);
     color: rgba(51, 51, 51, 0.9);     
     width: 80%;
- }
+  }
+  
+  
  
-
- 
- table td {
+  table td {
     border: 1px solid rgba(255, 255, 255, 0.4);
     vertical-align: top;
-    padding: 4px;
-    width: 50%;
- }
- 
- table tbody tr:nth-of-type(odd) {
+    padding: 4px 8px;
+    width: 100%;
+  }
+  
+  table tbody tr:nth-of-type(odd) {
     background-color: rgba(255, 255, 255, 0.4);
- }
- 
- table tbody tr:nth-of-type(even) {
+  }
+  
+  table tbody tr:nth-of-type(even) {
     background-color: rgba(255, 255, 255, 0.6);
- }
- 
- table a {
+  }
+  
+  table a {
     color: rgba(51, 51, 51, 0.9);
     text-decoration: none;
- }
- 
- table a:hover {
+  }
+  
+  table a:hover {
     text-decoration: underline;
- }
- 
- 
+  }
+  
+  
+  #UserName {
+   font-size: 1.2em; 
+   line-height: 1.3em; 
+   height: 1.5em;
+   padding: 0px 70px;
+  }
