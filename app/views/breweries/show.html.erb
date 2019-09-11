@@ -1,10 +1,11 @@
 <h1><%= @brewery.name %></h1>
 
+<div class="brewery_info">
 <p>Brewery type: <%= @brewery.brewery_type %></p>
 <p>Brewery Address: <%= @brewery.street %>, <%= @brewery.city %>, <%= @brewery.state%> <%=@brewery.postal_code %> </p>
-
 <p>Phone: <%= @brewery.phone %></p>
 <p>Website: <%= link_to @brewery.website_url, @brewery.website_url, target: :_blank %></p>
+</div>
 
 <% if @brewqueue_id == "" %>
   <%= button_to "Add to your Brew Queue!", "/user_brew_queues", method: :post, params: { breweryid_for_action: @brewery.id, userid_for_action: session[:user_id] } %>
@@ -21,13 +22,15 @@
 -->
 
 <!-- This HTML will load a google MAP with of the brewery's location  -->
-<% if @brewery.street != "" && @brewery.street.exclude?("PO Box") && @brewery.city != "" && @brewery.state != "" %>
-   <div class="mapouter"><div class="gmap_canvas"><iframe width="450" height="375" id="gmap_canvas" src="https://maps.google.com/maps?q=<%=@brewery.street%>%2C<%=@brewery.city%>%2C<%=@brewery.state%>&t=&z=14&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"></a></div></div>
-<% elsif @brewery.longitude != "" && @brewery.longitude != "" %>
-   <div class="mapouter"><div class="gmap_canvas"><iframe width="450" height="375" id="gmap_canvas" src="https://maps.google.com/maps?q=<%=@brewery.latitude%>%2C<%=@brewery.longitude%>&t=&z=14&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"></a></div></div>
-<% elsif @brewery.city != "" && @brewery.state != "" %>
-   <div class="mapouter"><div class="gmap_canvas"><iframe width="450" height="375" id="gmap_canvas" src="https://maps.google.com/maps?q=<%=@brewery.city%>%2C<%=@brewery.state%>&t=&z=14&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"></a></div></div>
-<% end %>
+<div id="google_map">
+  <% if @brewery.street != "" && @brewery.street.exclude?("PO Box") && @brewery.city != "" && @brewery.state != "" %>
+    <div class="mapouter"><div class="gmap_canvas"><iframe width="450" height="375" id="gmap_canvas" src="https://maps.google.com/maps?q=<%=@brewery.street%>%2C<%=@brewery.city%>%2C<%=@brewery.state%>&t=&z=14&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"></a></div></div>
+  <% elsif @brewery.longitude != "" && @brewery.longitude != "" %>
+    <div class="mapouter"><div class="gmap_canvas"><iframe width="450" height="375" id="gmap_canvas" src="https://maps.google.com/maps?q=<%=@brewery.latitude%>%2C<%=@brewery.longitude%>&t=&z=14&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"></a></div></div>
+  <% elsif @brewery.city != "" && @brewery.state != "" %>
+    <div class="mapouter"><div class="gmap_canvas"><iframe width="450" height="375" id="gmap_canvas" src="https://maps.google.com/maps?q=<%=@brewery.city%>%2C<%=@brewery.state%>&t=&z=14&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/best-wordpress-themes/"></a></div></div>
+  <% end %>
+</div>
 
 
 <br />
