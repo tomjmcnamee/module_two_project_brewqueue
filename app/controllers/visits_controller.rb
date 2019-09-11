@@ -1,4 +1,6 @@
 class VisitsController < ApplicationController
+    before_action :authorized?
+
     def index
         @visits = Visit.all
     end 

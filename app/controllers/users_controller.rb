@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @comments = Comment.all 
     @user = User.find(params[:id])
     @user_brewqueues = UserBrewQueue.where(user_id: @user.id)
     @user_visits = @user.visits

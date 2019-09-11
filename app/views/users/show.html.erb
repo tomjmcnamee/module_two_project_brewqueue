@@ -25,20 +25,18 @@ E-mail Address: <%=@user.email_address%><br />
 <table>
 <tbody>
     <th>Brewery Name</th>
-    <th>Interested?</th>
-    <th>Favorite?</th>
     <th>Visits</th>
     <th>Comments</th>
-<% if @user.id == session[:user_id]%>
-  <tr><td></td><td></td><td></td><td></td><td></td></tr>
+<% if @user_brewqueues.length == 0%>
+  <tr><td></td><td></td><td></td></tr>
 <% end %>  
   <%  @user_brewqueues.each do |bq| %>
   <tr>
     <td><%=link_to bq.brewery.name, brewery_path(bq.brewery_id) %></td>
-    <td><%=bq.interested_in%></td>
-    <td><%=bq.favorite%></td>
-    <td><%=link_to @user_visits.where(user_brew_queue_id: bq.id).length, visit_path(1)%></td>
-    <td><%=bq.favorite%></td>
+    <td><%=link_to @user_visits.where(user_brew_queue_id: bq.id).length, brewery_path(bq.brewery_id) %></td>
+    <% isolated_visits_obj_arr =  @user_visits.where(user_brew_queue_id: bq.id)%>
+    <% is_visit_ids_arr = isolated_visits_obj_arr.map { |visit| visit.id } %>
+    <td><%=link_to @comments.where(visit_id:is_visit_ids_arr).length, brewery_path(bq.brewery_id) %>
   </tr>
   <%  end %>
 </tbody>
