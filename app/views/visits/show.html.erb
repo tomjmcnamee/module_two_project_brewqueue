@@ -1,7 +1,7 @@
-<h1>Visit Show Page </h1>
-<h3>Name: <%=@visit.event_name%>
-<h3>Date: <%=@visit.visit_date%>
-<h3>Brew Queue ID: <%=@visit.user_brew_queue_id%>
+<h1><%=@visit.event_name%></h1>
+<br />
+<h3>at <%=@brewery_obj.name%></h3>
+<h3>on <%=@visit.visit_date%></h3>
 
 <div><%=button_to 'Edit', edit_visit_path(@visit), method: :get %></div>
 <div><%=button_to 'Delete', visit_path(@visit), method: :delete %></div>
@@ -9,12 +9,12 @@
 
 <table>
 <tbody>
-    <th>Date</th>
     <th>Comment</th>
+    <th>Date</th>
   <%@visit_comments.each do |comment| %>
   <tr>
-    <td><%= comment.created_at %></td>
     <td><%= comment.comment%></td>
+    <td><%= comment.created_at %></td>
   </tr>
   <%  end %>
 </tbody>

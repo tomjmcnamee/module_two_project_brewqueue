@@ -6,6 +6,7 @@ class VisitsController < ApplicationController
     def show
         @visit = Visit.find(params[:id])
         @user = User.find(session[:user_id])
+        @brewery_obj = @visit.user_brew_queue.brewery
         @visit_comments = Comment.where(visit_id: @visit.id)
     end 
 
