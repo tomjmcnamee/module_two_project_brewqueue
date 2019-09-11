@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_10_150343) do
+ActiveRecord::Schema.define(version: 2019_09_11_190456) do
 
   create_table "breweries", force: :cascade do |t|
     t.string "name"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 2019_09_10_150343) do
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
     t.index ["visit_id"], name: "index_comments_on_visit_id"
   end
 
@@ -70,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_09_10_150343) do
     t.index ["user_brew_queue_id"], name: "index_visits_on_user_brew_queue_id"
   end
 
+  add_foreign_key "comments", "users"
   add_foreign_key "comments", "visits"
   add_foreign_key "user_brew_queues", "breweries"
   add_foreign_key "user_brew_queues", "users"
