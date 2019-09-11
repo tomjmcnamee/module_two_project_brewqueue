@@ -38,15 +38,22 @@
     <th>Event Name</th>
     <th>Date</th>
     <th>Comments</th>
+  <% if @bq_visit_objs.length== 0%>
+    <tr><td></td><td></td><td></td></tr>
+  <% end %> 
   <%@bq_visit_objs.each do |bqv| %>
   <tr>
     <td><%=link_to bqv.event_name, visit_path(bqv.id) %></td>
     <td><%=bqv.visit_date%></td>
-    <td><%=link_to bqv.event_name, visit_path(bqv.id) %></td>
+    <td><%=link_to bqv.comments.count, visit_path(bqv.id) %></td>
   </tr>
   <%  end %>
 </tbody>
 </table>
+<br />
+<br />
+<br />
+<br />
 
 
 

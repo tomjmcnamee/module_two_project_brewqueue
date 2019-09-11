@@ -27,8 +27,10 @@ E-mail Address: <%=@user.email_address%><br />
     <th>Brewery Name</th>
     <th>Visits</th>
     <th>Comments</th>
+
 <% if @user_brewqueues.length == 0%>
   <tr><td></td><td></td><td></td></tr>
+
 <% end %>  
   <%  @user_brewqueues.each do |bq| %>
   <tr>

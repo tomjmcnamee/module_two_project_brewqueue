@@ -22,7 +22,7 @@ footer, header, main, nav, section {
 
 address, article, aside, blockquote, body, cite, 
 div, dl, dt, dd, em, figcaption, figure, footer, 
-h1, h2, h3, h4, h5, h6, header, html, img, 
+ header, html, img, 
 li, main, nav, nav a, ol, p, section, span, ul,
 table, tr, td, th, col, colgroup {
    margin: 0;
@@ -57,7 +57,7 @@ nav a {
 
  
  html {
-    background: linear-gradient(to top left, rgb(193, 206, 219), rgb(56, 87, 119));
+    background:  rgb(139, 161, 184);
     font-family: Verdana, Geneva, sans-serif;
  }
  
