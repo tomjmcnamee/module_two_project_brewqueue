@@ -14,8 +14,12 @@
   <%@visit_comments.each do |comment| %>
   <tr>
     <td><%= comment.comment%></td>
-    <td><%= comment.created_at %></td>
+    <td><%= comment.created_at.strftime("%m-%d-%Y") %></td>
   </tr>
   <%  end %>
 </tbody>
+
+<br />
+<br />
+<br />
 
