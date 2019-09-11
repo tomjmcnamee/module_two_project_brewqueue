@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
         @comment = Comment.new
         @comment.update(comment_params)
         @comment.save
-        redirect_to visits_path
+        redirect_to visit_path(@comment.visit_id)
     end
     
     def update
