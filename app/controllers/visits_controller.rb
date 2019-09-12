@@ -7,6 +7,7 @@ class VisitsController < ApplicationController
     
     def show
         @visit = Visit.find(params[:id])
+        @new_comment = Comment.new
         @user = User.find(session[:user_id])
         @brewery_obj = @visit.user_brew_queue.brewery
         @visit_comments = Comment.where(visit_id: @visit.id)
@@ -23,14 +24,15 @@ class VisitsController < ApplicationController
 
     def create
         @visit = Visit.new
-        @user_brew_queue = params[:visit][:user_brew_queue_id]
-        if @visit.update(visit_params)
-            @visit.save
-            redirect_to brewery_path(@visit.user_brew_queue.brewery.id)
-        else
-            flash.now[:message] = @visit.errors.full_messages.first
-            render :new
-        end
+            @user_brew_queue = params[:visit][:user_brew_queue_id]   
+            if @visit.update(visit_params)
+                @visit.save
+                redirect_to brewery_path(@visit.user_brew_queue.brewery.id)
+            else
+                flash.now[:message] = @visit.errors.full_messages.first
+                render :new
+            end
+        
     end
     
     def update

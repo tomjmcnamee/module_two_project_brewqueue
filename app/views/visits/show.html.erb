@@ -1,20 +1,25 @@
 <h1><%=@visit.event_name%></h1>
-<br />
 <h3>at <%=@brewery_obj.name%></h3>
 <h3>on <%=@visit.visit_date%></h3>
 
-<div><%=button_to 'Edit', edit_visit_path(@visit), method: :get %></div>
-<div><%=button_to 'Delete', visit_path(@visit), method: :delete %></div>
-<div><%=button_to "Add Comment", new_comment_path, method: :get, params: { visit_id_for_action: @visit.id}  %>
+<div><%=button_to 'Edit this visit', edit_visit_path(@visit), method: :get %></div>
+<div><%=button_to 'Delete this visit', visit_path(@visit), method: :delete %></div>
 <div><%= button_to "Return to your Brew Queue", user_path(session[:user_id]), method: :get %><div>
-
+<br />
+<h1>------Your Comments------</h1>
+<%= form_for @new_comment do |f| %>
+  <%= f.text_area :comment , style: 'float: left; width: 100%; display: flex'%>
+  <%= f.hidden_field :visit_id, :value => @visit.id %>
+  <%= f.hidden_field :user_id, :value => session[:user_id] %>
+  <%= f.submit "Add New Comment", style: 'float: right; width: 60%; display: flex'%>
+<%end%>
 <table>
 <tbody>
-    <th>Comment</th>
+    <th style='width: 75%'>Comment</th>
     <th>Date</th>
   <%@visit_comments.each do |comment| %>
   <tr>
-    <td><%= comment.comment%></td>
+    <td style="text-align: left"><%= comment.comment%></td>
     <td><%= comment.created_at.strftime("%m-%d-%Y") %></td>
   </tr>
   <%  end %>
@@ -23,4 +28,3 @@
 <br />
 <br />
 <br />
-

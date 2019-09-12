@@ -42,9 +42,14 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    @user.save
-    redirect_to users_path(@user)
+    if @user.update(user_params)
+      byebug
+      @user.save
+      redirect_to user_path(@user)
+    else
+      flash.now[:message] = @user.errors.full_messages
+      render :edit
+    end
   end 
 
   def destroy 
@@ -56,6 +61,11 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :street, :city, :state, :postal_code, :age, :age, :email_address, :password)
+    params.require(:user).permit(:first_name, :last_name, :street, :city, :state, :postal_code, :age, :email_address, :password)
   end 
+
+  def user_params_no_pw
+    params.require(:user).permit(:first_name, :last_name, :street, :city, :state, :postal_code, :age, :email_address)
+  end 
+  
 end

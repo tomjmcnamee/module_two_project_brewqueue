@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
     def update
         @comment = Comment.find(params[:id])
         @comment.update(comment_params)
-        redirect_to comments_path(@comment)
+        redirect_to visit_path(@comment.visit_id)
     end 
 
     def destroy 

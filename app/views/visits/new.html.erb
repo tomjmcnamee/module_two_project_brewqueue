@@ -9,7 +9,13 @@
 <label>Event Name: </label>
 <%= f.text_field :event_name %><br>
 <label>Date: </label>
-<%= f.date_field :visit_date%><br>
-<%= f.hidden_field :user_brew_queue_id, :value => @user_brew_queue %><br>
-<%= f.submit%>
+<%= f.date_field :visit_date %>
+
+  <% if @user_brew_queue == "" %>
+    <%= f.hidden_field :user_brew_queue_id, :value => UserBrewQueue.create(user_id: session[:user_id], brewery_id: params[:breweryid_for_action]).id %><br>
+    <%= f.submit %>
+  <% else %>
+    <%= f.hidden_field :user_brew_queue_id, :value => @user_brew_queue %><br>
+    <%= f.submit%>
+   <% end %>
 <%end%>

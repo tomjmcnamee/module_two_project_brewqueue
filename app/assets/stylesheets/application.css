@@ -139,16 +139,20 @@ nav a {
     color: rgba(51, 51, 51, 0.9);     
     width: 80%;
     margin: 0px auto;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    text-align: center;
   }
   
+  table .text_align_left {text-align: left}
+
   
  
-  table td {
+  table td, th {
     border: 1px solid rgba(255, 255, 255, 0.4);
     vertical-align: top;
     padding: 4px 8px;
-    width: 100%;
+
   }
   
   table tbody tr:nth-of-type(odd) {

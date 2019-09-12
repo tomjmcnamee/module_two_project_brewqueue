@@ -38,7 +38,14 @@
 
 
 <br />
-<h1>YOUR Visits</h1>
+<h2>Your Visits</h2>
+  <% if @brewqueue_id == "" %>
+    <%= button_to "Add Visit", new_visit_path, method: :get, params: { breweryid_for_action: @brewery.id, userid_for_action: session[:user_id], brew_queue_id_for_action: @brewqueue_id}  %>
+  <% end %>
+  <% if @brewqueue_id != "" %>
+    <%= button_to "Add Visit", new_visit_path, method: :get, params: { brew_queue_id_for_action: @brewqueue_id }  %>
+  <% end %>
+  </br>
 
 <table>
 <tbody>

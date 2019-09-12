@@ -15,5 +15,5 @@ class User < ApplicationRecord
             errors.add(:age, 'too low.  You must be over 21!')
         end
     end
-    
+
 end
