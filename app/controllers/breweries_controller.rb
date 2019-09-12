@@ -9,6 +9,13 @@ class BreweriesController < ApplicationController
   def show
     @brewery = Brewery.find(params[:id])
     @user = User.find(session[:user_id])
+    #the next 5 are to gather all comments for a sinbgle brewery
+      @brewery_bq_obj_arr = UserBrewQueue.where(brewery_id: @brewery.id)
+      @bq_ids_arr = @brewery_bq_obj_arr.map { |bq| bq.id }
+      @visit_obj_arr = Visit.where(user_brew_queue_id: @bq_ids_arr)
+      @visit_id_arr = @visit_obj_arr.map {|vo| vo.id}
+      @brewery_comments_obj_arr = Comment.where(visit_id: @visit_id_arr)
+    # previouis 5 were to gather all comments for single brewery
     @brewqueue_id = ""
     if @user.user_brew_queues.find_by(brewery_id: @brewery.id) != nil
       @brewqueue_id = @user.user_brew_queues.find_by(brewery_id: @brewery.id).id

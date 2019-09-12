@@ -1,18 +1,3 @@
-<!-- 
-<h1> <%=@user.first_name + " " + @user.last_name%> </h1><br />
-Street: <%=@user.street%><br />
-City: <%=@user.city%><br />
-State: <%=@user.state%><br />
-Postal Code: <%=@user.postal_code%><br />
-Age: <%=@user.age%><br />
-E-mail Address: <%=@user.email_address%><br />
--->
-
-<!-- THESE SHOULD be moved to options on the header bar 
-<%= button_to 'Edit your account', edit_user_path(@user), method: :get%>
-<%= button_to 'Delete you account', user_path(@user), method: :delete%>
-<%= button_to 'Sign Out', logout_path(@session), method: :delete%>
--->
 <br />
 <div class="center_text">
   <% if @user.id == session[:user_id]%>
