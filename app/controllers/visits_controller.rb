@@ -40,10 +40,13 @@ class VisitsController < ApplicationController
     end 
 
     def destroy 
-        @user = User.find(session[:user_id])
-        @visit = Visit.find(params[:id])
-        @visit.delete
-        redirect_to user_path(@user.id)
+        def destroy 
+            @user = session[:user_id]
+            @visit = Visit.find(params[:id])
+            @comments_arr = Comment.where(visit_id: @visit)
+            @comments_arr.each { |com| com.delete }
+            @visit.delete
+            redirect_to user_path(@user)
     end 
 
     private
