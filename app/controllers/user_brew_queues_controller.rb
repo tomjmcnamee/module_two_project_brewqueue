@@ -25,7 +25,7 @@ class UserBrewQueuesController < ApplicationController
     else
       flash.now[:messages] = new_user_brew_queue.errors.full_messages
     end
-    redirect_to user_path(user_id)
+    redirect_to brewery_path(brewery_id)
   end 
 
   def update
