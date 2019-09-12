@@ -1,37 +1,27 @@
-<h1>New User Form</h1>
+<h2>New User Form</h2>
 
 <%  if flash[:message] %>
-  <%=  flash[:message] %>
-<% end %>
+  <% flash[:message].each do |message| %>
+   <h2  style="color: red;"><%=  message %> <br /></h2>
+   <h2  style="color: red;"><a href="http://www.disney.com" target="_blank">Perhaps this is more your speed.</a></h2>
+  <% end %>
+<% end %> 
 <br />
 
 <%= form_for(@user) do |f|%>
     <label>First Name:<label>
     <%= f.text_field :first_name%><br>
 
-    <label>Last Name:<label>
-    <%= f.text_field :last_name%><br>
-
-    <label>Street:<label>
-    <%= f.text_field :street%><br>
-
-    <label>City:<label>
-    <%= f.text_field :city%><br>
-
-    <label>State:<label>
-    <%= f.text_field :state%><br>
-
-    <label>Postal Code:<label>
-    <%= f.text_field :postal_code%><br>
 
     <label>Age:<label>
-    <%= f.text_field :age%><br>
+    <%= f.text_field :age %><br>
 
     <label>Email Address:<label>
     <%= f.text_field :email_address%><br>
 
     <label>Password:<label>
     <%= f.password_field :password%><br>
-
+<br />
 <%=f.submit%>
+<br />
 <%end%>

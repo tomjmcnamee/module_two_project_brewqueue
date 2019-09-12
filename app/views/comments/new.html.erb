@@ -3,5 +3,6 @@
 <label>Comment</label><br>
 <%= f.text_area :comment%>
 <%= f.hidden_field :visit_id, :value => @visit %><br>
+<%= f.hidden_field :user_id, :value => session[:user_id] %><br>
 <%= f.submit%>
 <%end%>

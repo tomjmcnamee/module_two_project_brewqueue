@@ -1,27 +1,14 @@
-<!-- 
-<h1> <%=@user.first_name + " " + @user.last_name%> </h1><br />
-Street: <%=@user.street%><br />
-City: <%=@user.city%><br />
-State: <%=@user.state%><br />
-Postal Code: <%=@user.postal_code%><br />
-Age: <%=@user.age%><br />
-E-mail Address: <%=@user.email_address%><br />
--->
-
-<!-- THESE SHOULD be moved to options on the header bar 
-<%= button_to 'Edit your account', edit_user_path(@user), method: :get%>
-<%= button_to 'Delete you account', user_path(@user), method: :delete%>
-<%= button_to 'Sign Out', logout_path(@session), method: :delete%>
--->
 <br />
-<% if @user.id == session[:user_id]%>
-  <h2>----------You have <%=pluralize(@user_brewqueues.length, 'entry')%> in your Brew Queue--------</h2>
-  <% if @user_brewqueues.length== 0 %>
-    <h2>To add breweries to your BrewQueue search and add</h2><br />
-  <% end %>  
-<% else %>
-  <h2>----------There are <%=pluralize(@user_brewqueues.length, 'entry')%> in <%=@user.first_name%>'s Brew Queue--------</h2>
-<% end %>  
+<div class="center_text">
+  <% if @user.id == session[:user_id]%>
+    <h2>----------You have <%=pluralize(@user_brewqueues.length, 'entry')%> in your Brew Queue--------</h2>
+    <% if @user_brewqueues.length== 0 %>
+      <h2>To add breweries to your BrewQueue search and add</h2><br />
+    <% end %>  
+  <% else %>
+    <h2>----------There are <%=pluralize(@user_brewqueues.length, 'entry')%> in <%=@user.first_name%>'s Brew Queue--------</h2>
+  <% end %> 
+</div> 
 <table>
 <tbody>
     <th>Brewery Name</th>
@@ -47,15 +34,19 @@ E-mail Address: <%=@user.email_address%><br />
 <br />
 <% if @user.id == session[:user_id]%>
   <h2>----------Search For Breweries--------</h2>
-  <%= form_tag(user_path(@user.id), method: :get) do   %>
-  Name: <%= text_field_tag(:search_name, params[:search_name]) %><br />
-  City: <%= text_field_tag(:search_city, params[:search_city]) %><br />
-  State: <%= select_tag :search_state, options_from_collection_for_select(@states, :to_s, :to_s), { :include_blank => true } %><br />
-    <%= submit_tag "Search" %> <% %>
-  <% end %>
+  <div class="centered_search">
+    <%= form_tag(user_path(@user.id), method: :get) do   %>
+    Name: <%= text_field_tag(:search_name, params[:search_name]) %><br />
+    City: <%= text_field_tag(:search_city, params[:search_city]) %><br />
+    State: <%= select_tag :search_state, options_from_collection_for_select(@states, :to_s, :to_s), { :include_blank => true } %><br />
+      <br /><%= submit_tag "Search" %> <% %>
+    <% end %>
+    <br /> <br />
+  </div>
 
   <br />
   <% if @search_result_brewery_objs %>
+  <h2>----------Search Results--------</h2>
     <% @search_result_brewery_objs.each do |res| %>
       <%= link_to res.name, brewery_path(res.id) %>, <%= res.city %>, <%= res.state%>, <%= button_to "Add to your Brew Queue!", "/user_brew_queues", method: :post, params: { breweryid_for_action: res.id, userid_for_action: session[:user_id]} %><br />
     <% end %>
