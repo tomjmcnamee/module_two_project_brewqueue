@@ -6,6 +6,7 @@
 <div><%=button_to 'Edit', edit_visit_path(@visit), method: :get %></div>
 <div><%=button_to 'Delete', visit_path(@visit), method: :delete %></div>
 <div><%=button_to "Add Comment", new_comment_path, method: :get, params: { visit_id_for_action: @visit.id}  %>
+<div><%= button_to "Return to your Brew Queue", user_path(session[:user_id]), method: :get %><div>
 
 <table>
 <tbody>
