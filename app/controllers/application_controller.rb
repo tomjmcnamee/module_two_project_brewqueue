@@ -14,5 +14,9 @@ class ApplicationController < ActionController::Base
     end
 
     def homepage
+        @user = session[:user_id]
+        if logged_in? 
+            redirect_to user_path(@user)
+        end 
     end 
 end
