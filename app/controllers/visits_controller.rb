@@ -40,9 +40,10 @@ class VisitsController < ApplicationController
     end 
 
     def destroy 
+        @user = User.find(session[:user_id])
         @visit = Visit.find(params[:id])
         @visit.delete
-        redirect_to user_path(user)
+        redirect_to user_path(@user.id)
     end 
 
     private

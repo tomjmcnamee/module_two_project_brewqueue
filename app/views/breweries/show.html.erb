@@ -7,6 +7,8 @@
 <p>Website: <%= link_to @brewery.website_url, @brewery.website_url, target: :_blank %></p>
 </div>
 
+<br>
+
 <% if @brewqueue_id == "" %>
   <%= button_to "Add to your Brew Queue!", "/user_brew_queues", method: :post, params: { breweryid_for_action: @brewery.id, userid_for_action: session[:user_id] } %>
 <% else %>
