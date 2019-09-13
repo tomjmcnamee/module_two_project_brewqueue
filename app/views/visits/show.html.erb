@@ -11,7 +11,7 @@
   <%= f.text_area :comment , style: 'float: left; width: 100%; display: flex'%>
   <%= f.hidden_field :visit_id, :value => @visit.id %>
   <%= f.hidden_field :user_id, :value => session[:user_id] %>
-  <%= f.submit "Add New Comment", style: 'float: right; width: 60%; display: flex'%>
+  <%= f.submit "Add New Comment"%>
 <%end%>
 <table>
 <tbody>
