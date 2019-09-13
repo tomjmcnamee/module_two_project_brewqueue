@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
     <title>BrewQueue</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="../assets/javascripts/script.js"></script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBhiA3gxx9nHL1j--Tzn5LGRp-NpKah4Q&callback=initMap"
+    ></script>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
    <header>
-      <!--<img src="http://miskatonicbrewing.com/wp-content/uploads/2015/10/Miskatonic-Brewing-Company-Home-Banner-8-600x237.jpg" alt="Cinema Penguin" id="logoimg" /> -->
       <%=  image_tag("sampler_cups.jpg", size: "500x129")%>
       <div>
       <nav class="horizontal" id="topLinks">
