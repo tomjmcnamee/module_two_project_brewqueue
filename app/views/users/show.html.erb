@@ -12,6 +12,7 @@
 <table>
 <tbody>
     <th>Brewery Name</th>
+    <th>City</th>
     <th>Visits</th>
     <th>Comments</th>
 
@@ -22,6 +23,7 @@
   <%  @user_brewqueues.each do |bq| %>
   <tr>
     <td style="text-align: left"><%=link_to bq.brewery.name, brewery_path(bq.brewery_id) %></td>
+    <td style="text-align: left"><%=bq.brewery.city%></td>
     <td><%=link_to @user_visits.where(user_brew_queue_id: bq.id).length, brewery_path(bq.brewery_id) %></td>
     <% isolated_visits_obj_arr =  @user_visits.where(user_brew_queue_id: bq.id)%>
     <% is_visit_ids_arr = isolated_visits_obj_arr.map { |visit| visit.id } %>
