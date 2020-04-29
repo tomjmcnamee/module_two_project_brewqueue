@@ -33,7 +33,7 @@ class VisitsController < ApplicationController
                 render :new
             end
         
-    end
+``    end
     
     def update
         @visit = Visit.find(params[:id])
