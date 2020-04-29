@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+npm install --save react-randomizer
+https://www.npmjs.com/package/react-randomizer
